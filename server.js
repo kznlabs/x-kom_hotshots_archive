@@ -15,12 +15,12 @@ http.createServer(app).listen(80, () => {
     console.log('Nasłuchiwanie na ::80')
 })
 
-if (fs.existsSync('./ssl/privkey.pem')) {
+if (fs.existsSync('/etc/letsencrypt/live/api.purpurmc.pl/privkey.pem')) {
     https.createServer(
         {
-            key: fs.readFileSync('./ssl/privkey.pem'),
-            cert: fs.readFileSync('./ssl/cert.pem'),
-            ca: fs.readFileSync('./ssl/chain.pem'),
+            key: fs.readFileSync('/etc/letsencrypt/live/api.purpurmc.pl/privkey.pem'),
+            cert: fs.readFileSync('/etc/letsencrypt/live/api.purpurmc.pl/cert.pem'),
+            ca: fs.readFileSync('/etc/letsencrypt/live/api.purpurmc.pl/chain.pem'),
         },
         app
     )
