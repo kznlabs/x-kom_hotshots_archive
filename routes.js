@@ -14,9 +14,10 @@ app.get("/current", async (req, res) => {
 })
 
 app.get("/insert", async (req, res) => {
-    await insertIntoDatabase().then((a) => {
+    await getNewHotshot().then(async () =>
+        await insertIntoDatabase().then((a) => {
         res.send({message: `${a}`})
-    })
+        }))
 })
 
 app.get("/list", async (req, res) => {
